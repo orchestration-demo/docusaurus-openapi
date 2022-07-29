@@ -1,0 +1,20 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Response Codes
+
+DomPay uses the following standard HTTP response codes to indicate the status of your request.
+
+| **HTTP Code** | **Meaning**                        | **Description**                                              | **Request Type** |
+| :----------- | :--------------------------------- | :----------------------------------------------------------- | :--------------- |
+| 200          | Success                            | The gateway successfully acknowledged request                | ALL              |
+| 201          | Created                            | The request during the creation of new resources was successful. | POST             |
+| 400          | Bad Request                        | The data in your request was unexpected. Please check the **'error _ summary'** field in the response body. | ALL|
+| 403          | Forbidden                          | Your account does not have access to the requested API operation. | ALL              |
+| 404          | Not Found                          | Required resource not found.                                 | ALL              |
+| 408          | API Unavailable (only for.Net SDK) | Response from the.Net SDK if it cannot reach the API         | ALL              |
+| 500          | System Error                       | Unexpected server error                                      | ALL              |

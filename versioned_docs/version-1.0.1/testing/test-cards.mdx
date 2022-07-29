@@ -1,0 +1,53 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Test Cards 💳
+
+DomPay provides developers with the following test card suite for use in our Sandbox environment.
+
+## Approved
+
+:::tip Approved
+Test cards in the following group return an APPROVED response when used in the sandbox environment.
+:::
+
+| **Card Scheme**        | **Card Number**       | **Expiry Date** | **CVV**  |
+|------------------------|---------------------- |-----------------|----------|
+| **Visa**               | 4012 0000 3333 0026   |   01 / 39       |  100     |
+| **MasterCard**         | 5111 1111 1111 1118   |   01 / 39       |  100     |
+| **AMEX**               | 3714 496353 98431     |   01 / 39       | 1000     |
+
+
+## Declined
+
+:::danger Declined
+Test cards in the following group return an DECLINED response when used in the sandbox environment.
+:::
+
+| **Card Scheme**        | **Card Number**       | **Expiry Date** | **CVV**  |
+|------------------------|---------------------- |-----------------|----------|
+| **Visa**               | 4012 0000 3333 0026   |   05 / 39       |  100     |
+| **MasterCard**         | 5111 1111 1111 1118   |   05 / 39       |  100     |
+| **AMEX**               | 3714 496353 98431     |   05 / 39       |  1000    |
+
+## Additional Test Card Values
+
+:::info
+DomPay also allows you to set certain **expiry dates** when sending a transaction to the gateway, and expect a certain transaction response to be returned.
+
+For example, a transaction with the expiry date of 04 / 27 returns the response EXPIRED_CARD.
+:::
+
+| **Expiry Date**        | **Expected Transaction Response**| 
+|------------------------|----------------------------------|
+| 01 / 39                | APPROVED                         |   
+| 05 / 39                | DECLINED                         |
+| 04 / 27                | EXPIRED_CARD                     |
+| 08 / 28                | TIMED_OUT                        |
+| 01 / 37                | ACQUIRER_SYSTEM_ERROR            |
+| 02 / 37                | UNSPECIFIED_FAILURE              |   
+| 05 / 37                | UNKNOWN                          | 

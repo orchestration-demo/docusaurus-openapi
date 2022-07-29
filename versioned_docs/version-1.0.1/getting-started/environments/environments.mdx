@@ -1,0 +1,39 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Environments
+
+Depending on the environment required, there are two basic URLs to interact with the DomPay:
+
+### REST API
+
+| **Enviroment** | **URL**           |
+| :------------  | :-----------------| 
+| **Sandbox**        | https://api-sandbox.dompay.com.au|
+| **Production**     | https://api.dompay.com.au|
+
+### Merchant Dashboard
+
+| **Enviroment** | **URL**           |
+| :------------  | :-----------------| 
+| **Sandbox**         | https://app-sandbox.dompay.com.au|
+| **Production**      | https://app.dompay.com.au|
+
+### Widget 
+
+| **Type**       | **URL**           | 
+| :--------------|:------------------|
+| **Compressed** | https://widget.dompay.com/sdk/latest/widget.umd.min.js|
+| **Full (Development Only)**|https://widget.dompay.com/sdk/latest/widget.umd.js|
+
+
+You can view the structure of DomPay's response codes by clicking on the tab below. 
+
+
+```jsx title="Sandbox Enviroment"
+widget.setEnv('sandbox');
+```
+
+```jsx title="Production Enviroment"
+widget.setEnv('production');
+```

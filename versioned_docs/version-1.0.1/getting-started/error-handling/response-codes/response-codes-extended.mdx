@@ -1,0 +1,81 @@
+---
+sidebar_position: 3
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Repsonse Codes (Extended)
+
+## Additional Repsonse Codes
+
+In addition to the Repsonse Codes page, DomPay's API generally returns a detailed error message and downstream errors.
+
+| **HTTP Code** | **Description**                    |  **Message**                                                 |
+| :------------ | :--------------------------------- | :----------------------------------------------------------- | 
+| 400           | Internal Validation|<ul><li>validation_error</li><li>required_error</li><li>unfulfilled_condition</li></ul>|
+| 400           | Gateway Validation|<ul><li>gateway_error</li><li>insufficient_funds</li><li>сredit_card_invalid_or_expired</li><li>transaction_declined</li><li>transaction_declined_hard</li><li>system_error</li><li>fraud_warning</li><li>invalid_transaction_details</li><li>unknown</li></ul>|
+| 400           | Gateway Processing| <ul><li>gateway_error</li><li>insufficient_funds</li><li>сredit_card_invalid_or_expired</li><li>transaction_declined</li><li>transaction_declined_hard</li><li>system_error</li><li>fraud_warning</li><li>invalid_transaction_details</li><li>unknown</li></ul>|       
+| 400 - 599     | Other             |<ul><li>unspecified_error</li></ul>|        
+
+## Repsonse Structures
+
+:::tip
+You can view the structure of DomPay's response codes by clicking on the tab below. 
+:::
+
+<Tabs>
+<TabItem value="json" label="HTTP 400">
+
+```json title="Internal Validation"
+{
+   "message":"string",
+   "code":"string",
+   "details":{
+      "path?":"string",
+      "messages":"string"
+   }
+}
+```
+
+```json title="Gateway Validation"
+{
+   "message":"string",
+   "code":"string",
+   "details":{
+      "path?":"string",
+      "gateway_specific_code":"string",
+      "gateway_specific_description":"string messages":"string"
+   }
+}
+```
+
+```json title="Gateway Processing"
+{
+   "message":"string",
+   "code":"string",
+   "status_code":"string",
+   "status_code_description":"string",
+   "details":{
+      "path?":"string",
+      "gateway_specific_code":"string",
+      "gateway_specific_description":"string messages":"string"
+   }
+}
+```
+</TabItem>
+
+<TabItem value="json-2" label="HTTP 400-599">
+
+```json title="Other"
+{
+   "message":"string",
+   "code":"string",
+   "details":{
+      "messages":"string"
+   }
+}
+```
+</TabItem>
+</Tabs>
+
+

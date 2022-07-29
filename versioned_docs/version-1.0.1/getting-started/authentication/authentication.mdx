@@ -1,0 +1,22 @@
+---
+sidebar_position: 1
+---
+
+# Authentication
+
+When sending requests to the DomPay API, you must either provide a public key or a secret key depending on your use case.
+
+The table below will help you determine which API key you should generate:
+
+| Application            | Key Required | Description                                                |
+| ---------------------- | ------------ | ---------------------------------------------------------- |
+| Client SDK (Widget.js) | Public Key   | The public key is set with a function call.                |
+| REST API               | Secret Key   | Secret key is added as a header to the DomPay API request. |
+
+API keys are generated via DomPay's Merchant Dashboard, in three easy steps:
+
+1. Log in to the PowerBoard Merchant Dashboard (Sandbox or Production).
+2. Click on the link **'My Company'** and go to the heading **'API and Security'**.
+3. On the screen you will see both the public and secret key required to send requests to the DomPay API.
+
+![API-Keys-Example](https://app-block.oi5fc6oxqk-eqg35wxk53xn.p.runcloud.link/Authenication-API-Keys.png)

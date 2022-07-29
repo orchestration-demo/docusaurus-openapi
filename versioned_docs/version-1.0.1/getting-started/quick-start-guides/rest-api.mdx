@@ -1,0 +1,141 @@
+---
+sidebar_position: 1
+---
+
+# RESTful API
+
+## Overview 
+
+There are two main methods of processing payments on the DomPay platform, as described on this page. 
+
+## REST API
+
+The DomPay API is organised around the REST protocol.
+
+Our API has predictable resource-oriented URLs and uses HTTP response codes to indicate API errors.
+
+Payments performed on the Sandbox environment never hit the banking networks and incur no cost.
+
+### Step 1) Set Your Headers
+
+:::info
+This section is an example of server-side integration that you can build.
+:::
+
+Setting headers is an important component of an API request, the headers must contain two main parameters:
+
+- **Content-Type:** application/json
+- **X-User-Secret-Key** for your API Secret Key. 
+
+```http
+Content-Type: application/json
+
+x-user-secret-key: {{secretkey}}
+```
+
+### Step 2) Set Your Parameters
+
+In order to process a payment via DomPay's API, you first need to create a JSON object with the required parameters.
+
+DomPay's API Reference can be found [here](https://google.com) or in the Navbar above.
+
+```json title="Charge Request with One-Time Token"
+{
+	"amount":"100",
+	"currency":"AUD",
+	"token": "{{Your-One-Time-Token}}"
+}
+```
+
+### Step 3) Send You Payment
+
+Once you have configured your headers and request parameters, it is time to send your payment! 
+
+In the example below we will send a payment with the following conditions:
+
+- ❗  HTTP Method is POST 
+- ❗  201 Expected 
+- ❗  Approved Required (Set via Visa Test Card) 
+- ❗  Payment Source is a One-Time-Token 
+
+```json title="Payment Request"
+"Endpoint" : "https://api.dompay.io/v1/charges",
+
+"Content-Type" : "application/json",
+
+"x-user-secret-key": "Your_API_Secret_Key"
+
+{
+	"amount":"100",
+	"currency":"AUD",
+	"token":"2839b39b-1865-4cbb-9387-fb2f3c83c822"
+}
+```
+DomPay will proceed to process your request and provide a JSON reponse accordingly.
+
+**✅  Your successful response includes parameters:**
+
+- **201 Created HTTP Response** 
+- **"Status": "Complete"**
+- **Comprehensive JSON Response Data**
+
+```json title="Payment Response"
+{
+    "status": 201,
+    "error": null,
+    "resource": {
+        "type": "charge",
+        "data": {
+            "external_id": "ec55910d",
+            "_id": "5ec4e026b12c99579e46e852",
+            "created_at": "2020-05-20T07:45:42.574Z",
+            "updated_at": "2020-05-20T07:45:43.294Z",
+            "remittance_date": "2020-05-21T07:45:43.294Z",
+            "amount": 100,
+            "company_id": "5cbeda664fdfb25772b5547f",
+            "currency": "AUD",
+            "__v": 0,
+            "transactions": [
+                {
+                    "external_id": "ec55910d",
+                    "external_reference": "87633456",
+                    "created_at": "2020-05-20T07:45:42.574Z",
+                    "currency": "AUD",
+                    "amount": 100,
+                    "_id": "5ec4e026b12c99579e46e853",
+                    "error_code": null,
+                    "error_message": null,
+                    "gateway_specific_description": null,
+                    "gateway_specific_code": null,
+                    "_source_ip_address": "192.168.0.1",
+                    "status": "complete",
+                    "type": "sale"
+                }
+            ],
+            "one_off": true,
+            "archived": false,
+            "customer": {
+                "payment_source": {
+                    "gateway_type": "DomPay",
+                    "gateway_name": "DomPay 1",
+                    "type": "card",
+                    "gateway_id": "5cbede1f151b842653e987be",
+                    "card_name": "John Citizen",
+                    "card_number_last4": "4242",
+                    "card_number_bin": "42424242",
+                    "expire_month": 9,
+                    "expire_year": 2020,
+                    "card_scheme": "visa"
+                }
+            },
+            "capture": true,
+            "authorization": false,
+            "status": "complete",
+            "items": [],
+            "transfer": {
+                "items": []
+            }
+        }
+    }
+}
+```
